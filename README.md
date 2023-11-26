@@ -6,9 +6,9 @@ Implied Volatility Calculator
 
 ## Description
 
-This Python program calculates implied volatility of an option using the Newton-Raphson method. Implied volatility is the market's forecast of a likely movement in a security's price and is a metric used by investors to estimate future fluctuations based on certain predictive factors.Implied volatility cannot be directly calculated from the Black-Scholes formula; instead, it needs to be solved for using numerical methods like Newton-Raphson.
+This Python program calculates implied volatility of an option using the Newton-Raphson method. Implied volatility is the market's forecast of a likely movement in a security's price and is a metric used by investors to estimate future fluctuations based on certain predictive factors. Implied volatility cannot be directly calculated from the Black-Scholes formula; instead, it needs to be solved for using numerical methods like Newton-Raphson.
 
-Implied volatility is the parameter in the Black-Scholes option pricing model that, when input into the model, makes the model's output price match the observed market price of the option. Since the Black-Scholes formula is used to calculate theoretical option prices, finding the implied volatility involves solving for it given the observed market price.
+Since the Black-Scholes formula is used to calculate theoretical option prices, finding the implied volatility involves solving for it given the observed market price.
 
 The calculate_implied_volatility function starts with an initial guess for the implied volatility (vol_guess), often set to a reasonable value.
 It then iteratively refines this guess using the Newton-Raphson method until a convergence criteria is met.
@@ -45,7 +45,7 @@ The calculation of implied volatility in the provided code is based on the Newto
 
 In the context of the provided code, the function being targeted is the difference between the Black-Scholes option price and the market price of the option. The goal is to find the implied volatility that makes this difference close to zero.
 
-The reason for using an iterative approach is that the relationship between option price and implied volatility is nonlinear, and a direct formula for solving for implied volatility does not exist.Newton-Raphson is a widely used method for solving nonlinear equations and is effective for finding roots of functions.
+The reason for using an iterative approach is that the relationship between option price and implied volatility is nonlinear, and a direct formula for solving for implied volatility does not exist. Newton-Raphson is a widely used method for solving nonlinear equations and is effective for finding roots of functions.
 
 Feel free to use, modify, and distribute this code as needed. If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
