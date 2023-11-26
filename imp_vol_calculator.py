@@ -23,7 +23,7 @@ def calculate_implied_volatility(S, K, t, r, mkt_price, option_type, tol=0.00001
     option_type = 'c' for call option, 'p' for put option
     tol = Tolerance level for convergence in the iterative process (default is 0.00001)
     '''
-    # Set initial parameters for the iterative profess
+    # Set initial parameters for the iterative process
     num_iter = 1000  # Max number of iterations
     vol_guess = 0.3  # Initial guess of implied volatility
 
