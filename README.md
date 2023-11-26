@@ -1,7 +1,5 @@
 
-# Project Title
-
-Implied Volatility Calculator
+# Implied Volatility Calculator
 
 
 ## Description
