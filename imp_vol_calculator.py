@@ -11,7 +11,7 @@ def main():
     #Print the result
     print(f"Implied Volatility: {implied_volatility}%")
 
-def calculate_implied_volatility(S, K, t, r, mkt_price, option_type, tol=0.00001):
+def calculate_implied_volatility(S, K, t, r, mkt_price, option_type):
     '''
     Implied volatility is the market's forecast of a likely movement in a security's price.
     It is a metric used by investors to estimate future fluctuations (volatility) of a security's price based on certain predictive factors.
@@ -23,9 +23,10 @@ def calculate_implied_volatility(S, K, t, r, mkt_price, option_type, tol=0.00001
     option_type = 'c' for call option, 'p' for put option
     tol = Tolerance level for convergence in the iterative process (default is 0.00001)
     '''
-    # Set initial parameters for the iterative process
+    # Set initial parameters for the iterative profess
     num_iter = 1000  # Max number of iterations
     vol_guess = 0.3  # Initial guess of implied volatility
+    tol = 0.00001 # Tolerance level for convergence
 
     # Iteratively update implied volatility using the Black-Scholes formula and vega
     for i in range(num_iter):
@@ -35,7 +36,7 @@ def calculate_implied_volatility(S, K, t, r, mkt_price, option_type, tol=0.00001
         new_bs_price = bs(option_type, S, K, t, r, vol_new)
 
         # Check for convergence based on tolerance
-        if (abs(vol_guess - vol_new) < tol or abs(new_bs_price - mkt_price) < tol):
+        if (abs(vol_guess - vol_new)< tol or abs(new_bs_price - mkt_price) < tol):
             break
 
         # Update the guess for the next iteration
