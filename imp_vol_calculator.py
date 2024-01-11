@@ -3,15 +3,15 @@ from py_vollib.black_scholes.greeks.analytical import vega
 
 def main():
     # Get the input from the user
-    option_type, S, K, r, t, mkt_price = get_input()
+    option_type, S, K, r, t, mkt_price, tol = get_input()
 
     # Calculate implied volatility using the input parameters
-    implied_volatility = calculate_implied_volatility(S, K, r, t, mkt_price, option_type)
+    implied_volatility = calculate_implied_volatility(S, K, r, t, mkt_price, option_type, tol)
 
     #Print the result
     print(f"Implied Volatility: {implied_volatility}%")
 
-def calculate_implied_volatility(S, K, t, r, mkt_price, option_type):
+def calculate_implied_volatility(S, K, t, r, mkt_price, option_type, tol = 0.00001):
     '''
     Implied volatility is the market's forecast of a likely movement in a security's price.
     It is a metric used by investors to estimate future fluctuations (volatility) of a security's price based on certain predictive factors.
@@ -23,10 +23,9 @@ def calculate_implied_volatility(S, K, t, r, mkt_price, option_type):
     option_type = 'c' for call option, 'p' for put option
     tol = Tolerance level for convergence in the iterative process (default is 0.00001)
     '''
-    # Set initial parameters for the iterative profess
+    # Set initial parameters for the iterative process
     num_iter = 1000  # Max number of iterations
     vol_guess = 0.3  # Initial guess of implied volatility
-    tol = 0.00001 # Tolerance level for convergence
 
     # Iteratively update implied volatility using the Black-Scholes formula and vega
     for i in range(num_iter):
@@ -74,8 +73,15 @@ def get_input():
 
             mkt_price = float(input("Market price of the option: ").replace(",", "."))
 
+            # Prompt user for tolerance level
+            tol_input = input("Tolerance level for convergence (press Enter to use default 0.00001): ")
+            if tol_input:
+                tol = float(tol_input)
+            else:
+                tol = 0.00001
+
             # Return the input values
-            return option_type, S, K, t, r, mkt_price
+            return option_type, S, K, t, r, mkt_price, tol
         except ValueError as e:
             # Handle invalid input and prompt the user to try again
             print(str(e))
